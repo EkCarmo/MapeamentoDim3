@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /products/{productId}/{fileName} {
+      allow read, write: if request.auth != null
+        && request.resource.size < 10 * 1024 * 1024 // máx. 10MB por foto
+        && request.resource.contentType.matches('image/.*');
+      // permite delete mesmo sem os campos de "write" acima (ex: request.resource é nulo ao deletar)
+      allow delete: if request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+body {
+  background-color: #f7f7f5;
+  color: #1c1e21;
+  font-family: var(--font-body);
+}
+
+.font-code {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+::selection {
+  background-color: #2f5d50;
+  color: white;
+}
+
+/* foco visível para acessibilidade em teclado */
+:focus-visible {
+  outline: 2px solid #2f5d50;
+  outline-offset: 2px;
+}
